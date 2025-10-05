@@ -17,8 +17,7 @@ This is a simple Rock Paper Scissors game built with JavaScript as part of The O
 - `script.js` – Contains the game logic in JavaScript
 - `README.md` – This file
 
-## Screenshots
-![Screenshot](../01-Landing_Page/images/placeholder.png)
+
 
 ## Credits
 Built by following [The Odin Project](https://www.theodinproject.com/) curriculum.
