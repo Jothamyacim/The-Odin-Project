@@ -64,17 +64,6 @@ function playGame() {
     const humanSelection = getHumanChoice();
     const computerSelection = getComputerChoice();
 
-    //
-
-    /* 
-    
-    for (let i = 0; i < rounds; i++) {
-        oneRound();
-    }
-
-    console.log(getScore(humanScore, computerScore));
-
-    */
 
 
     // Determine the overall winner
@@ -89,13 +78,18 @@ function playGame() {
     }
 
 
-    function oneRound() {
-        console.log(playRound(humanSelection, computerSelection));
-        console.log(`Human Score: ${humanScore}, Computer Score: ${computerScore}`);
+    function fiveRounds() {
+        for (let i = 0; i < rounds; i++) {
+            const humanSelection = getHumanChoice();
+            const computerSelection = getComputerChoice();
+            console.log(playRound(humanSelection, computerSelection));
+            console.log(`Human Score: ${humanScore}, Computer Score: ${computerScore}`);
+        }
+        console.log(getScore(humanScore, computerScore));
     }
 
-    oneRound();
-    console.log(getScore(humanScore, computerScore));
+    fiveRounds();
+
 
 }
 
