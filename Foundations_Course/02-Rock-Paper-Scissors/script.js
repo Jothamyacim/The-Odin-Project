@@ -22,6 +22,8 @@ function playGame() {
             return 'scissors';
         }
     } 
+
+    //function to get human choice via prompt
     /*
     function getHumanChoice() {
         let userInput = prompt("Choose rock, paper or scissors: ");
@@ -46,25 +48,34 @@ function playGame() {
 
 
     function playRound(humanChoice, computerChoice) {
-        //humanChoice = humanChoice.toLowerCase();
+        let result = ""
 
         if (humanChoice === computerChoice) {
-            return `Its a Tie ! You both chose ${humanChoice}`;
+            console.log(result = `Its a Tie ! You both chose ${humanChoice}`);
         } else if (
             (humanChoice === 'rock' && computerChoice === 'scissors') ||
             (humanChoice === 'scissors' && computerChoice === 'paper') ||
             (humanChoice === 'paper' && computerChoice === 'rock')
         ) {
             humanScore++;
-            return `You Win ! ${humanChoice} beats ${computerChoice}`;
+            console.log(result =  `You Win ! ${humanChoice} beats ${computerChoice}`);
         } else {
             computerScore++;
-            return `You Lose ! ${computerChoice} beats ${humanChoice}`;
+            console.log(result =  `You Lose ! ${computerChoice} beats ${humanChoice}`);
         }
 
+        updateScores(result);
+        return result;
     }
+
+    function updateScores(resultText) {
+        document.getElementById("human-score").textContent = `Human Score: ${humanScore}`;
+        document.getElementById("computer-score").textContent = `Computer Score: ${computerScore}`;
+        document.getElementById("result").textContent = resultText;
+
+    } 
     
-    
+    // Example of how to call the functions
     //const humanSelection = getHumanChoice();
     //const computerSelection = getComputerChoice();
 
@@ -90,7 +101,7 @@ function playGame() {
             const humanSelection = getHumanChoice();
             const computerSelection = getComputerChoice();
             console.log(playRound(humanSelection, computerSelection));
-            console.log(`Human Score: ${humanScore}, Computer Score: ${computerScore}`);
+            
         }
         console.log(getScore(humanScore, computerScore));
     }
@@ -107,9 +118,14 @@ function playGame() {
         button => {button.addEventListener("click", () => {
             const humanChoice = button.id;
             const computerChoice = getComputerChoice();
-            console.log(playRound(humanChoice, computerChoice));
+            playRound(humanChoice, computerChoice);
+            console.log(`Human Score: ${humanScore}, Computer Score: ${computerScore}`);
         })}
     );
+
+
+
+    
         
 
 }
