@@ -1,0 +1,4 @@
+.rps-container {
+    display: flex;
+    gap: 16px;
+}

@@ -22,29 +22,31 @@ function playGame() {
             return 'scissors';
         }
     } 
-    
+    /*
     function getHumanChoice() {
         let userInput = prompt("Choose rock, paper or scissors: ");
         userInput = userInput.toLowerCase();
 
         // Validate user input
 
-        /*
+        
         if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors') {
             return userInput;
         } else {
             console.log("Invalid input. Please try again.");
             return getHumanChoice();
         }
-        */
+        
         return userInput;
     }
+    */
+    
 
     
 
 
     function playRound(humanChoice, computerChoice) {
-        humanChoice = humanChoice.toLowerCase();
+        //humanChoice = humanChoice.toLowerCase();
 
         if (humanChoice === computerChoice) {
             return `Its a Tie ! You both chose ${humanChoice}`;
@@ -61,8 +63,13 @@ function playGame() {
         }
 
     }
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
+    
+    
+    //const humanSelection = getHumanChoice();
+    //const computerSelection = getComputerChoice();
+
+   //call playRound() function with parameters
+   //console.log(playRound(humanSelection, computerSelection));
 
 
 
@@ -77,7 +84,7 @@ function playGame() {
         }
     }
 
-
+    /*
     function fiveRounds() {
         for (let i = 0; i < rounds; i++) {
             const humanSelection = getHumanChoice();
@@ -89,8 +96,24 @@ function playGame() {
     }
 
     fiveRounds();
+    */
 
+   //selecting all three buttons
+    const buttons = document.querySelectorAll("button");
+
+    //adding event listeners to each button
+
+    buttons.forEach(
+        button => {button.addEventListener("click", () => {
+            const humanChoice = button.id;
+            const computerChoice = getComputerChoice();
+            console.log(playRound(humanChoice, computerChoice));
+        })}
+    );
+        
 
 }
 
 playGame();
+
+
