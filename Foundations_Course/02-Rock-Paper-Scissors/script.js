@@ -143,7 +143,7 @@ function playGame() {
     */
 
    //selecting all three buttons
-    const buttons = document.querySelectorAll("button");
+    const buttons = document.querySelectorAll(".rps-container button");
 
     //adding event listeners to each button
 
