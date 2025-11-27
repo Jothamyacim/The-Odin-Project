@@ -8,12 +8,17 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello World !</h1>
-    <h3>Chose Rock, Paper, or Scissors !</h3>
+    <!-- header moved into the game card so it visually sits on top of the card -->
+   
 
     <main>
 
         <section class="rps">
+            <header class="header rps-header">
+                <h1>Hello World !</h1>
+                <h3>Chose ROCK, PAPER, or SCISSORS !</h3>
+                <h4>First to reach 5 points wins</h4>
+            </header>
             <div class="rps-container">
 
                 <div class="rock-button">
@@ -29,28 +34,39 @@
                 </div>
 
             </div>
+
+            <section class="result-container">
+
+                <div class="score-board">
+                    <p class="score-text">Score will be displayed here</p>
+
+                    <div class="scores">
+                        <p class="human-score" id="human-score">Human Score: 0</p>
+                        <p class="computer-score" id="computer-score">Computer Score: 0</p>
+                    </div>
+
+                </div>
+
+                <div class="results">
+                    <p class="result-text" id="result">Result will be displayed here</p>
+                
+                </div>
+
+                <div class="winners">
+                    <p class="winner-text" id="winner"></p>
+                </div>
+
+                <div class="reset-button">
+                    <!--<button type="button" class="reset" id="reset">Reset Game</button>-->
+
+                </div>
+
+            </section>
        
         </section>
 
 
-        <section class="result-score">
-
-            <div class="score-board">
-                <p class="score-text">Score will be displayed here</p>
-
-                <div class="scores">
-                    <p class="human-score" id="human-score">Human Score: 0</p>
-                    <p class="computer-score" id="computer-score">Computer Score: 0</p>
-                </div>
-
-            </div>
-
-            <div class="results">
-                <p class="result-text" id="result">Result will be displayed here</p>
-
-            </div>
-
-        </section>
+        
 
     </main>
 

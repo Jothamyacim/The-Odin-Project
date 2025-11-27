@@ -1,4 +1,187 @@
-.rps-container {
-    display: flex;
-    gap: 16px;
+/* Base / Reset */
+:root{
+    --bg:#071029;
+    --card:#0b1220;
+    --muted:#9fb0c8;
+    --text:#eaf3ff;
 }
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+    margin:0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: linear-gradient(180deg, #041022 0%, #081424 100%);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column; /* stack header above main */
+    align-items:center;    /* center horizontally */
+    justify-content:center; /* vertically center header + main so game card sits in viewport center */
+    padding:2rem 1.25rem;
+}
+
+header.header{
+    text-align:center;
+    margin-bottom:1rem;
+}
+header.header h1{
+    margin:0;
+    font-size:1.8rem;
+    letter-spacing:0.4px;
+}
+header.header h3{
+    margin:0.25rem 0 0;
+    color:var(--muted);
+    font-weight:500;
+}
+
+main{
+    width:100%;
+    max-width:960px;
+    display:grid;
+    grid-template-columns:1fr 320px;
+    gap:1.25rem;
+    align-items:start;
+    align-self:stretch; /* allow full-height grid alignment */
+}
+
+/* space the main below the header */
+/* small gap between header and main when vertically centered */
+/* space under the fixed header so main content is visible */
+main{margin-top:0.6rem}
+
+/* center the game card inside the main grid */
+.rps{justify-self:center; width:100%; max-width:640px}
+
+@media (max-width:760px){
+    .rps{max-width:100%}
+}
+
+@media (max-width:760px){
+    main{grid-template-columns:1fr;}
+}
+
+.rps{
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    padding:1.25rem;
+    border-radius:12px;
+    box-shadow:0 8px 24px rgba(2,6,23,0.6);
+    position:fixed; /* center independently of document flow */
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:min(92%,640px);
+    z-index:50;
+}
+
+.rps-container{
+    display:flex;
+    gap:var(--rps-gap,16px);
+    justify-content:center;
+    align-items:center;
+}
+.rps-container > div{flex:1; display:flex; justify-content:center}
+
+.rps-container button{
+    /* responsive square buttons */
+    width:clamp(84px, 18vmin, 140px);
+    height:clamp(84px, 18vmin, 140px);
+    border-radius:14px;
+    border:0;
+    cursor:pointer;
+    font-size:1rem;
+    font-weight:800;
+    color:var(--text);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:transform .16s cubic-bezier(.2,.9,.2,1), box-shadow .16s ease, opacity .12s ease;
+    box-shadow: 0 10px 30px rgba(2,6,23,0.55), inset 0 -6px 18px rgba(0,0,0,0.12);
+    text-shadow:0 1px 0 rgba(255,255,255,0.04);
+}
+.rps-container button:hover{transform:translateY(-6px) scale(1.03); box-shadow:0 20px 46px rgba(2,6,23,0.6)}
+.rps-container button:active{transform:translateY(-2px) scale(.995)}
+.rps-container button:focus{outline: none}
+.rps-container button:focus-visible{box-shadow:0 0 0 4px rgba(120,180,255,0.12), 0 10px 30px rgba(2,6,23,0.55)}
+
+/* disabled state when game ends */
+.rps-container button[disabled]{opacity:.42; cursor:not-allowed; transform:none; box-shadow:none}
+
+/* Variant colors */
+button#rock{background:linear-gradient(180deg,#ffb677,#ff9750); color:#2a1200}
+button#paper{background:linear-gradient(180deg,#a6e7ff,#67c9ff); color:#052033}
+button#scissors{background:linear-gradient(180deg,#d6b9ff,#a87bff); color:#1c0f2b}
+
+.score-board{
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    padding:1rem;
+    border-radius:12px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    align-items:stretch;
+    box-shadow:0 8px 20px rgba(2,6,23,0.5);
+}
+.score-text{color:var(--muted); margin:0 0 4px 0; text-align:center}
+.scores{display:flex; gap:12px; width:100%; justify-content:space-between}
+.scores p{margin:0; padding:8px 10px; border-radius:8px; background:rgba(255,255,255,0.02); font-weight:700}
+
+.results{margin-top:6px; text-align:center}
+#result{
+    padding:10px 12px;
+    border-radius:8px;
+    background:rgba(0,0,0,0.25);
+    min-height:48px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:800;
+    transition: background .18s ease, color .12s ease, transform .12s ease;
+}
+
+/* Winner / final message */
+.winner-text{
+    margin-top:8px;
+    font-size:0.95rem;
+    color:var(--text);
+    opacity:0.95;
+    min-height:1.1em;
+    transition: color .14s ease, transform .14s ease, opacity .14s ease;
+}
+
+/* result state classes - JS should toggle these on #result */
+.result-win{background:linear-gradient(90deg,#113a1a,#0b6b3a); color:#dfffe6}
+.result-lose{background:linear-gradient(90deg,#3a1010,#6b0b0b); color:#ffdede}
+.result-tie{background:linear-gradient(90deg,#2a2f3a,#3a4150); color:#e6eefc}
+
+/* subtle win/lose highlight via inline text content (JS could add classes later) */
+.result-win{background:linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)); color:#dbeffc}
+
+/* small responsive tweaks */
+@media (max-width:420px){
+    .rps-container button{width:92px; height:92px; font-size:.9rem}
+    main{padding:0}
+}
+
+/* On small screens, keep .rps in normal document flow so header and card stack naturally */
+@media (max-width:760px){
+    .rps{
+        position:static;
+        transform:none;
+        left:auto;
+        top:auto;
+        margin:0 auto;
+        width:100%;
+        max-width:100%;
+    }
+    body{justify-content:flex-start}
+}
+
+/* Accessibility helpers */
+button{ -webkit-tap-highlight-color: transparent }
+
+/* small utility */
+.muted{color:var(--muted)}

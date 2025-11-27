@@ -9,6 +9,7 @@ function playGame() {
     let humanScore = 0;
     let computerScore = 0;
     const rounds = 5;
+    let gameOver = false;
 
 
     function getComputerChoice() {
@@ -65,8 +66,13 @@ function playGame() {
         }
 
         updateScores(result);
+        // update the UI, then check if someone reached the winning score
+        checkWinner();
         return result;
+       
     }
+    
+
 
     function updateScores(resultText) {
         document.getElementById("human-score").textContent = `Human Score: ${humanScore}`;
@@ -74,6 +80,32 @@ function playGame() {
         document.getElementById("result").textContent = resultText;
 
     } 
+    function checkWinner() {
+        if (humanScore === 5 || computerScore === 5) {
+            gameOver = true;
+            const winner = humanScore === 5 ? "🎉 You win the game!" + " Click Reset to play again" 
+            : "💀 Computer wins the game!" + " Click Reset to play again";
+           
+            const winnerP = document.querySelector(".winners #winner");
+            winnerP.textContent = winner;
+
+            document.querySelectorAll("button").forEach(button => {
+                button.disabled = true;
+            }); 
+
+            // Adding  a reset button functionality 
+            const resetDiv = document.querySelector(".reset-button");
+            const resetButton = document.createElement("button");
+            resetButton.textContent = "Reset Game";
+            resetButton.onclick = () => { window.location.reload(); };
+            resetDiv.appendChild(resetButton);
+
+
+
+        }
+    }
+
+
     
     // Example of how to call the functions
     //const humanSelection = getHumanChoice();
@@ -94,6 +126,7 @@ function playGame() {
             return 'Sorry, You Lose !';
         }
     }
+
 
     /*
     function fiveRounds() {
