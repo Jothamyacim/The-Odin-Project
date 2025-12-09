@@ -23,8 +23,20 @@ body{
     background-color: white;
     border: 1px solid black;
 
-    /*flex-wrap property makes sure that not all 256 divs are squezzed on one line*/
+    /*flex-wrap property makes sure that items flows to another line*/
     display: flex;
     flex-wrap: wrap;
+
+}
+
+/*css rules for the squares*/
+.grid-square {
+    /*To make sure that only 16 suares sit on one row we must divide the full width
+    by 16 (i.e 100/16 = 6.25). This will be the height and width of our individual squares*/
+
+    height: 6.25%;
+    width: 6.25%;
+
+    border: 1px solid #ccc;
 
 }
