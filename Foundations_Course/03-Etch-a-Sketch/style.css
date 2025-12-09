@@ -1,0 +1,30 @@
+
+/*base sytyling to make things easier*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*centers the container in the middle of the screen*/
+    height: 100vh;
+    background-color: #efefef;
+}
+
+/*CSS rulesets for the container*/
+.container {
+    height: 500px;
+    width: 500px;
+    background-color: white;
+    border: 1px solid black;
+
+    /*flex-wrap property makes sure that not all 256 divs are squezzed on one line*/
+    display: flex;
+    flex-wrap: wrap;
+
+}
