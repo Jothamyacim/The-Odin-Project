@@ -19,8 +19,10 @@ for(let i = 0; i < totalSquares; i++) {
     //add classList for styling
     square.classList.add('grid-square');
 
+    /* EVENT LISTENERS*/ 
+    square.addEventListener("mouseenter", () => {square.classList.add("mouseHover");});
+
     //append squares to container
     container.appendChild(square);
 
 }
-

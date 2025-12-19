@@ -40,3 +40,9 @@ body{
     border: 1px solid #ccc;
 
 }
+
+/*defines the color of the div when hovered over*/
+.mouseHover {
+    background-color: #c6c6c6;
+    border-color: #c6c6c6;/* changes the color of the border so that it looks solid*/
+}
